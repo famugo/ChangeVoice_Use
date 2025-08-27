@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>变声器使用教程</title>
+    <style>
+        html, body{
+            margin:0;padding:0;background:linear-gradient(135deg,#fff0f5,#ffe4e8,#fff5f0);font-family: "Comic Sans MS", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", cursive, sans-serif;color:#4a4a4a;font-size:16px;-webkit-font-smoothing:antialiased;position:relative;line-height:1.6
+        }
+        body:before{
+            content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="20" cy="30" r="2" fill="%23ff9eb5" opacity="0.15"/><circle cx="160" cy="40" r="2.5" fill="%23ffa8cc" opacity="0.2"/><circle cx="50" cy="120" r="1.5" fill="%23ffb3d9" opacity="0.18"/><circle cx="180" cy="150" r="2" fill="%23ffc0e6" opacity="0.16"/><circle cx="30" cy="180" r="1.2" fill="%23ffcdf2" opacity="0.14"/><path d="M15,15 L18,12 L21,15 L18,18 Z" fill="%23ffb3d9" opacity="0.3"/><path d="M170,25 L173,22 L176,25 L173,28 Z" fill="%23ff9eb5" opacity="0.25"/><path d="M45,95 L48,92 L51,95 L48,98 Z" fill="%23ffa8cc" opacity="0.28"/><path d="M185,175 L188,172 L191,175 L188,178 Z" fill="%23ffc0e6" opacity="0.3"/><path d="M35,160 L38,157 L41,160 L38,163 Z" fill="%23ffcdf2" opacity="0.25"/><path d="M100,50 L110,60 L120,50 L125,65 L135,55 L140,70" stroke="%23ff85a2" stroke-width="1" fill="none" opacity="0.1"/><path d="M60,100 Q70,90 80,100 T100,100" stroke="%23ff9eb5" stroke-width="1" fill="none" opacity="0.1"/></svg>') repeat;pointer-events:none;z-index:-1;animation:float 20s ease-in-out infinite
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .wrap{padding:10px}
+        .main{max-width:720px;margin:0 auto;background:linear-gradient(145deg,rgba(255,255,255,0.9),rgba(255,245,250,0.85));border-radius:24px;box-shadow:0 20px 40px rgba(255,105,180,0.12),0 8px 16px rgba(255,182,193,0.08);padding:20px;backdrop-filter:blur(15px);border:2px solid rgba(255,192,203,0.3);position:relative;overflow:hidden}
+        .main:before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,182,193,0.05) 0%,transparent 50%);animation:sparkle 8s ease-in-out infinite alternate}
+        .main:after{content:'🌟';position:absolute;top:15px;right:25px;font-size:14px;opacity:0.7;animation:star-dance 3s ease-in-out infinite}
+        @keyframes star-dance{0%,100%{transform:rotate(0deg) translateY(0px)}50%{transform:rotate(10deg) translateY(-5px)}}
+    .title{font-size:26px;font-weight:800;text-align:center;margin:8px 0;background:linear-gradient(135deg,#ff6b9d,#c44569,#f8b500,#ff9ff3);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 4px rgba(255,105,180,0.3);position:relative;z-index:1}
+    .title:before{content:'💝';position:absolute;left:-30px;top:50%;transform:translateY(-50%);font-size:20px;animation:bounce 2s ease-in-out infinite}
+    .title:after{content:'🎀';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-size:20px;animation:bounce 2s ease-in-out infinite 0.5s}
+    @keyframes bounce{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-60%) scale(1.1)}}
+    @keyframes sparkle{0%{opacity:0.3;transform:rotate(0deg)}100%{opacity:0.8;transform:rotate(360deg)}}
+    .subtitle{font-size:13px;color:#ff69b4;text-align:center;margin-bottom:12px;font-weight:600;text-shadow:0 1px 2px rgba(255,105,180,0.2)}
+        .divider{height:1px;background:linear-gradient(90deg,transparent,#eef4ff,transparent);margin:8px 0;border-radius:2px}
+    .block{margin-bottom:16px;padding:16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,182,193,0.15),rgba(255,218,224,0.2),rgba(255,240,245,0.25));border:2px solid rgba(255,105,180,0.15);position:relative;box-shadow:0 8px 32px rgba(255,105,180,0.08)}
+    .block:before{content:'✨';position:absolute;top:8px;right:8px;font-size:12px;opacity:0.6;animation:twinkle 2s ease-in-out infinite alternate}
+    .block:after{content:'⭐';position:absolute;top:16px;left:8px;font-size:8px;opacity:0.4;animation:twinkle 2.5s ease-in-out infinite alternate-reverse}
+    @keyframes twinkle{0%{opacity:0.3;transform:scale(0.8)}100%{opacity:0.8;transform:scale(1.2)}}
+    .block-title{font-weight:800;color:#d63384;font-size:18px;margin-bottom:8px;display:flex;align-items:center;text-shadow:0 1px 3px rgba(214,51,132,0.2)}
+    .block-title:before{content:"";display:inline-block;width:10px;height:22px;background:linear-gradient(135deg,#ff69b4,#ff1493,#da0463);margin-right:10px;border-radius:8px;box-shadow:0 3px 12px rgba(255,105,180,0.4);position:relative}
+    .block-title:before{animation:glow 2s ease-in-out infinite alternate}
+    @keyframes glow{0%{box-shadow:0 3px 12px rgba(255,105,180,0.4)}100%{box-shadow:0 6px 20px rgba(255,105,180,0.6)}}
+    .block-content{line-height:1.7;font-size:16px;color:#5a5a5a;font-weight:500}
+    .step-list{padding-left:0;margin:6px 0}
+    .step-list li{list-style:none;padding:6px 0;border-left:3px solid transparent}
+    .step-list li:before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;background:linear-gradient(45deg,#ff69b4,#ff1493);border-radius:50%;vertical-align:middle;box-shadow:0 2px 6px rgba(255,105,180,0.5);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
+        .img-box,.video-box{text-align:center;margin:8px 0;position:relative}
+        .img-box:before{content:'💫';position:absolute;top:-8px;right:-8px;font-size:10px;opacity:0.5;z-index:2;animation:sparkle-rotate 4s linear infinite}
+        .video-box:before{content:'🎬';position:absolute;top:-8px;left:-8px;font-size:12px;opacity:0.6;z-index:2;animation:video-pulse 2s ease-in-out infinite}
+        @keyframes sparkle-rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        @keyframes video-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    .img-box img{max-width:100%;border-radius:16px;border:2px solid rgba(255,182,193,0.3);box-shadow:0 12px 30px rgba(255,105,180,0.15);filter:brightness(1.02) saturate(1.05)}
+    .img-row{display:flex;gap:10px;justify-content:center;align-items:center}
+    .img-row .img-box{flex:1;margin:0}
+    .img-small{max-width:68%!important}
+    .img-voice-analysis{max-width:50%!important}
+    .video-small{max-width:64%!important}
+    .video-medium{max-width:85%!important}
+    .video-box{position:relative}
+    .video-box video{max-width:100%;border-radius:16px;background:#000;box-shadow:0 15px 35px rgba(255,105,180,0.15);border:2px solid rgba(255,182,193,0.2)}
+    .video-box:after{content:"";position:absolute;left:12px;top:12px;width:36px;height:24px;background:linear-gradient(90deg,#4f75ff,#6bd3ff);opacity:0.06;border-radius:4px}
+        .note{background:#f6f8ff;border-left:3px solid #dbe7ff;padding:6px 8px;border-radius:4px;color:#2b6ef6;font-size:13px}
+        .muted{color:#7b8899;font-size:13px}
+    @media (max-width:420px){.main{padding:8px}.title{font-size:20px}.block-title{font-size:15px}.block-content{font-size:15px}}
+    /* 增加更宽松的行高与间距，用于长段落 */
+    .roomy{line-height:1.9;font-size:15px;padding-top:4px;padding-bottom:4px}
+    /* 异常联系样式：居中且更醒目 */
+    .contact-block{text-align:center;position:relative}
+    .contact-block:before{content:'🌈';position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:20px}
+    .contact-block:after{content:'💌';position:absolute;bottom:-10px;right:20px;font-size:16px;opacity:0.7;animation:float-message 3s ease-in-out infinite}
+    .contact-block .block-title{justify-content:center}
+    .contact-block .block-title:before{display:none}
+    .contact-block .block-content{font-weight:700;color:#d63384;font-size:16px;background:linear-gradient(135deg,rgba(255,245,238,0.8),rgba(255,228,225,0.9));padding:12px;border-radius:16px;border:2px solid rgba(255,105,180,0.3);box-shadow:0 6px 20px rgba(255,105,180,0.15)}
+    @keyframes float-message{0%,100%{transform:translateY(0px) rotate(-5deg)}50%{transform:translateY(-3px) rotate(5deg)}}
+    /* 注意块的可爱粉色背景 */
+    .attention{background:linear-gradient(135deg,rgba(255,182,193,0.2),rgba(255,218,224,0.25),rgba(255,228,225,0.3));border-left:5px solid #ff69b4;border:2px solid rgba(255,105,180,0.25);position:relative;animation:gentle-pulse 3s ease-in-out infinite}
+    .attention:before{content:'💕';position:absolute;top:14px;right:18px;font-size:18px;animation:heart-beat 1.5s ease-in-out infinite}
+    @keyframes gentle-pulse{0%,100%{box-shadow:0 8px 32px rgba(255,105,180,0.08)}50%{box-shadow:0 12px 40px rgba(255,105,180,0.15)}}
+    @keyframes heart-beat{0%,100%{transform:scale(1)}25%,75%{transform:scale(1.1)}50%{transform:scale(1.2)}}
+    .inline-attention{background:linear-gradient(90deg,rgba(255,182,193,0.3),rgba(255,192,203,0.4));color:#d63384;padding:3px 8px;border-radius:12px;font-weight:700;border:1px solid rgba(255,105,180,0.3);box-shadow:0 2px 6px rgba(255,105,180,0.2)}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="title">变声器男声变女声</div>
+        <div class="subtitle">版本：1.2.0</div>
+        <div class="block attention">
+            <div class="block-title">注意：</div>
+            <div class="block-content">
+                不能使用蓝牙耳机，鸿蒙5.0以上的系统不能使用，说话的时候保持环境安静，说普通话，使用前先在首页变声或者试用界面测试一下，同意所有权限，再去悬浮窗使用，如果没有同意录音权限，会导致悬浮窗录音的时候录不进去声音
+            </div>
+        </div>
+        <div class="block">
+            <div class="block-title">微信QQ变声教程：</div>
+            <div class="block-content">
+                1、微信/QQ聊天变声方法
+                <ul class="step-list">
+                    <li><span style="font-weight:700;color:#2b6ef6;margin-right:6px">（1）</span>首页开启悬浮窗，点击首页的&lt;浮窗&gt;按钮，找到"变声器男声变女声"，打开"允许"悬浮窗开关</li>
+                    <li><span class="inline-attention" style="font-weight:700;color:#2b6ef6;margin-right:6px">注意：</span>部分机型悬浮窗开关那里被黑色遮挡，可以到手机的设置-应用管理（或应用）-找到变声器男声变女声-权限-找到悬浮窗开关并打开</li>
+                    <li><span style="font-weight:700;color:#2b6ef6;margin-right:6px">（2）</span>点开悬浮窗，选择一个变声音效，点击开始录音，说普通话录音（支持唱歌），再次点击录音按钮停止录音</li>
+                    <li><span style="font-weight:700;color:#2b6ef6;margin-right:6px">（3）</span>录完音后，等待一会，手机喇叭会自动播放变好的声音，等待变声播放完 （这一步很重要，一定要按这个做）</li>
+                    <li><span style="font-weight:700;color:#2b6ef6;margin-right:6px">（4）</span>手动打开微信/QQ聊天界面，点击发语音的按钮，点击"按住说话"，手机喇叭会自动播放变好的声音，等待变声播放完就松开，此时变声的声音就发送出去了‌（就和日常发送语音一样操作，记住自己不发出声音，等待手机播放完变声器的声音就松开）</li>
+                    <li><span class="inline-attention" style="font-weight:700;color:#2b6ef6;margin-right:6px">注意：</span>基本所有发语音消息的软件都是这样的操作方法，支持所有能发语音消息的软件（微信qq抖音陌陌探探小红书钉钉soul王者荣耀等）</li>
+                </ul>
+            </div>
+            <div class="img-row">
+                <div class="img-box"><img src="权限申请1.png" alt="权限申请1" class="img-small"></div>
+                <div class="img-box"><img src="权限申请2.png" alt="权限申请2"></div>
+            </div>
+            <div class="video-box"><video controls src="app首次使用教程.mp4" class="video-medium"></video></div>
+        </div>
+        <div class="block">
+            <div class="block-title">语音包发送教程：</div>
+            <div class="block-content">
+                1、选择一个语音包，点击分享，点击微信或QQ会跳转到对应的软件界面
+            </div>
+            <div class="img-box"><img src="语音包分析方法.png" alt="语音包分析方法" class="img-voice-analysis"></div>
+            <div class="block-content">
+                2、微信/QQ聊天界面，点击发语音的按钮，点击"按住说话"，手机喇叭会自动播放语音包的声音，等待播放完就松开，此时语音包的声音就发送出去了‌（就和日常发送语音一样操作，记住自己不发出声音，等待手机播放完语音包的声音就松开）
+            </div>
+            <div class="video-box"><video controls src="语音包使用教程.mp4" class="video-small"></video></div>
+        </div>
+        <div class="block">
+            <div class="block-title">梦幻西游/逆水寒等可以发语音消息的游戏变声教程：</div>
+            <div class="block-content roomy">
+                1，打开梦幻西游的好友聊天窗口<br>
+                2，打开变声器悬浮窗，选择一个变声效果，点击录音，录完音后再次点击录音就录好了（<span class="inline-attention">注意录音的时候延迟个1-2秒再说话录音</span>），录完后变声器会自动播放变声后的录音，等他播放完<br>
+                3，点击悬浮窗的播放按钮，播放变声的声音，然后马上点击梦幻西游的好友聊天窗口的录音按钮，录完后松开<br>
+                <span class="inline-attention">注意：</span>可以发语音消息的游戏全都可以按这个方法操作
+            </div>
+            <div class="video-box"><video controls src="梦幻西游.mp4"></video></div>
+        </div>
+        <div class="block">
+            <div class="block-title">王者荣耀，和平精英等所有游戏，变声教程：</div>
+            <div class="block-content roomy">
+                需要2个手机，一个用作变声器，播放变声的声音，一个游戏用，接收变声器的声音<br>
+                1，变声前，先把游戏手机的麦克风关闭，再用变声器的手机录好变声的声音，录好后再去打开游戏手机的麦克风<br>
+                2，变声器的手机，点击悬浮窗的播放，她就会播放之前录好的变声的声音，然后你游戏的手机就听到这个声音，你的游戏里面的队友，不就可以听到这个变声的声音了么
+            </div>
+        </div>
+        <div class="block contact-block">
+            <div class="block-title">异常问题处理：</div>
+            <div class="block-content">
+                请联系qq864145081协助处理
+            </div>
+        </div>
+    </div>
+</body>
+</html>
